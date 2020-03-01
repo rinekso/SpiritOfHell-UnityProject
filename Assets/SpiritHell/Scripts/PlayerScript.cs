@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,13 +17,37 @@ public class PlayerScript : MonoBehaviour
     public bool isRight = true;
     public bool play;
 
+    public static bool BlockedByUI;
+    private EventTrigger eventTrigger;
     GraphicRaycaster raycaster;
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody2D>();
-    }
+        eventTrigger = GetComponent<EventTrigger>();
+        if(eventTrigger != null)
+        {
+            EventTrigger.Entry enterUIEntry = new EventTrigger.Entry();
+            // Pointer Enter
+            enterUIEntry.eventID = EventTriggerType.PointerEnter;
+            enterUIEntry.callback.AddListener((eventData) => { EnterUI(); });
+            eventTrigger.triggers.Add(enterUIEntry);
 
+            //Pointer Exit
+            EventTrigger.Entry exitUIEntry = new EventTrigger.Entry();
+            exitUIEntry.eventID = EventTriggerType.PointerExit;
+            exitUIEntry.callback.AddListener((eventData) => { ExitUI(); });
+            eventTrigger.triggers.Add(exitUIEntry);
+        }
+    }
+    public void EnterUI()
+    {
+        BlockedByUI = true;
+    }
+    public void ExitUI()
+    {
+        BlockedByUI = false;
+    }
     // Update is called once per frame
     void Update()
     {
@@ -37,24 +62,8 @@ public class PlayerScript : MonoBehaviour
 
             // controll touch
             if(Input.GetMouseButtonDown(0)){
-                //Set up the new Pointer Event
-                PointerEventData pointerData = new PointerEventData(EventSystem.current);
-                List<RaycastResult> results = new List<RaycastResult>();
 
-                //Raycast using the Graphics Raycaster and mouse click position
-                pointerData.position = Input.mousePosition;
-                bool ui = false;
-                EventSystem.current.RaycastAll(pointerData, results);
-
-                //For every result returned, output the name of the GameObject on the Canvas hit by the Ray
-                foreach (RaycastResult result in results)
-                {
-                    if(result.gameObject.layer == 5){
-                        ui = true;
-                    }
-                }
-
-                if(!ui){
+                if(!BlockedByUI){
                     speedUpMove();
                     isRight = !isRight;
                 }
@@ -75,7 +84,7 @@ public class PlayerScript : MonoBehaviour
         speedUp = true;
         tempDeg = deg;
         tempSpeed = speed;
-        deg = deg/10;
+        deg = 0;
         speed = speed*2;
     }
 }
