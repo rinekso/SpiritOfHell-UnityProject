@@ -6,36 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SpiritHell/Scenes/Mainmenu.unity
-    guid: 341403e6fcb83d54f84a8d594ee12fad
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/1.unity
-    guid: 43acc16aceeb14247b0a2ba2b71792eb
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/2.unity
-    guid: ce78b40d26d214a4c891ed27eb060fea
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/3.unity
-    guid: 738fec870a0c0fe429cf05261738c6c5
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/4.unity
-    guid: d498ad2df0e2110468d27baa91c0a6f5
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/5.unity
-    guid: 10775d40e190cda40ac7bf8028c74951
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/6.unity
-    guid: 85fb96fdf974d4b4c84384114e1336f1
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/7.unity
-    guid: 3235fde239d7c394ca4a6f7510b6fae0
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/8.unity
-    guid: 392913629dff6bb4aa2dd7b64ac12c22
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/9.unity
-    guid: a39f2f2acacae95498dd5fbd63f1cdee
-  - enabled: 1
-    path: Assets/SpiritHell/Scenes/Level/10.unity
-    guid: 4729b551e65a42940a44667838b1d6b7
+    path: Assets/SpiritHell/Scenes/LevelingMode/Main.unity
+    guid: 390d6c5d3b0d2e34eb646fe9db4176f9
   m_configObjects: {}
